@@ -38,9 +38,8 @@ const CoinInfo = ({coin}) => {
         const { data } = await axios.get(HistoricalChart(coin.id, days, currency));
         setHistoricData(data.prices);
         console.log(data)
-        console.log('precios historicos')
       }
-      console.log('data', historicData)
+      //console.log('data', historicData)
       fetchHistoricData()
     }, [coin, days, currency]);
 
