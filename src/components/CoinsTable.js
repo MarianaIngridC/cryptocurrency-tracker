@@ -18,15 +18,18 @@ const CoinsTable = () => {
   const navigate = useNavigate();
   const { currency, symbol } = CryptoState();
 
-  const fetchCoins = async() => {
-    setLoading(true);
-    const {data} = await axios.get(CoinList(currency));
-    setCoins(data);
-    setLoading(false);
-  } 
+  
   console.log(coins);
   console.log('desde coinstable');
   useEffect(() => {
+
+    const fetchCoins = async() => {
+      setLoading(true);
+      const {data} = await axios.get(CoinList(currency));
+      setCoins(data);
+      setLoading(false);
+    }
+
     fetchCoins();
   }, [currency]);
 

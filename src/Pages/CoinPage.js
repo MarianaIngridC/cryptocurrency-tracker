@@ -5,7 +5,6 @@ import { SingleCoin } from '../config/api';
 import axios from 'axios';
 import CoinInfo from '../components/CoinInfo';
 import { LinearProgress, makeStyles, Typography } from '@material-ui/core';
-import HTMLReactParser from 'html-react-parser';
 import { numberWithCommas } from '../components/Banner/Carousel';
 
 const CoinPage = () => {
@@ -14,19 +13,17 @@ const CoinPage = () => {
 
   const { currency, symbol } = CryptoState();
 
-  const fetchCoin = async() => {
-    const { data } = await axios.get(SingleCoin(id));
-    
-    setCoin(data);
-    console.log(data)
-    console.log('esta es la data')
-
-  }
+ 
   console.log(coin)
   useEffect(() => {
+    const fetchCoin = async() => {
+      const { data } = await axios.get(SingleCoin(id));
+      setCoin(data);
+      console.log(data)
+    }
     fetchCoin();
-
-  }, []);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   const useStyles = makeStyles((theme) => ({
     container: {

@@ -32,14 +32,15 @@ const CoinInfo = ({coin}) => {
   const [days, setDays] = useState(1);
   const { currency } = CryptoState();
 
-    const fetchHistoricData = async () => {
-      const { data } = await axios.get(HistoricalChart(coin.id, days, currency));
-      setHistoricData(data.prices);
-      console.log(data)
-      console.log('precios historicos')
-    }
-    console.log('data', historicData)
+ 
     useEffect(() => {
+      const fetchHistoricData = async () => {
+        const { data } = await axios.get(HistoricalChart(coin.id, days, currency));
+        setHistoricData(data.prices);
+        console.log(data)
+        console.log('precios historicos')
+      }
+      console.log('data', historicData)
       fetchHistoricData()
     }, [coin, days, currency]);
 
